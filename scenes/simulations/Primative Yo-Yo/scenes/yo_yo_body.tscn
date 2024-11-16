@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dynpx7052kebs" path="res://scenes/simulations/Primative Yo-Yo/assets/metal/Metal_scratched_009_metallic.jpg" id="4_0uwhr"]
 [ext_resource type="Texture2D" uid="uid://ycwmsye3nmus" path="res://scenes/simulations/Primative Yo-Yo/assets/metal/Metal_scratched_009_normal.jpg" id="5_46siu"]
 [ext_resource type="Texture2D" uid="uid://p0occmr8o3xt" path="res://scenes/simulations/Primative Yo-Yo/assets/metal/Metal_scratched_009_roughness.jpg" id="6_ysfff"]
-[ext_resource type="Material" path="res://scenes/simulations/Primative Yo-Yo/assets/materials/plastic.tres" id="7_wokwo"]
+[ext_resource type="Material" uid="uid://bc4htrv5i6s6w" path="res://scenes/simulations/Primative Yo-Yo/assets/materials/plastic.tres" id="7_wokwo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1nxt"]
 albedo_texture = ExtResource("1_6ou3a")
