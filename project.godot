@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="GoPhysics"
+run/main_scene="res://scenes/simulations/Primative Yo-Yo/scenes/TestLevel.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://scenes/icon.svg"

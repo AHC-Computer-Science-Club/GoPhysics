@@ -1,0 +1,125 @@
+[gd_scene load_steps=21 format=3 uid="uid://bk2fitutghmu4"]
+
+[ext_resource type="Texture2D" uid="uid://cnlwuffeewray" path="res://scenes/simulations/Primative Yo-Yo/assets/metal/Metal_scratched_009_basecolor.jpg" id="1_6ou3a"]
+[ext_resource type="Script" path="res://scenes/simulations/Primative Yo-Yo/scripts/yo_yo_body.gd" id="1_l4yka"]
+[ext_resource type="Texture2D" uid="uid://camghfnmkqf6q" path="res://scenes/simulations/Primative Yo-Yo/assets/metal/Metal_scratched_009_ambientOcclusion.jpg" id="2_qx6r4"]
+[ext_resource type="Texture2D" uid="uid://bg25skmxgxf11" path="res://scenes/simulations/Primative Yo-Yo/assets/metal/Metal_scratched_009_height.png" id="3_app8k"]
+[ext_resource type="Texture2D" uid="uid://dynpx7052kebs" path="res://scenes/simulations/Primative Yo-Yo/assets/metal/Metal_scratched_009_metallic.jpg" id="4_0uwhr"]
+[ext_resource type="Texture2D" uid="uid://ycwmsye3nmus" path="res://scenes/simulations/Primative Yo-Yo/assets/metal/Metal_scratched_009_normal.jpg" id="5_46siu"]
+[ext_resource type="Texture2D" uid="uid://p0occmr8o3xt" path="res://scenes/simulations/Primative Yo-Yo/assets/metal/Metal_scratched_009_roughness.jpg" id="6_ysfff"]
+[ext_resource type="Material" path="res://scenes/simulations/Primative Yo-Yo/assets/materials/plastic.tres" id="7_wokwo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1nxt"]
+albedo_texture = ExtResource("1_6ou3a")
+metallic = 0.57
+metallic_texture = ExtResource("4_0uwhr")
+roughness_texture = ExtResource("6_ysfff")
+normal_enabled = true
+normal_texture = ExtResource("5_46siu")
+ao_enabled = true
+ao_texture = ExtResource("2_qx6r4")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_app8k")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0238e"]
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.025
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2np3v"]
+top_radius = 0.095
+bottom_radius = 0.095
+height = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_826oa"]
+albedo_color = Color(0.501961, 0.294118, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_folf0"]
+radius = 0.01
+height = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hejup"]
+albedo_color = Color(0.807843, 0.0666667, 0.215686, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_72kne"]
+inner_radius = 0.365
+outer_radius = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a21pj"]
+albedo_color = Color(0.392157, 0.905882, 0.32549, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u4lhj"]
+albedo_color = Color(0.32549, 0.0509804, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hg1o4"]
+top_radius = 0.003
+bottom_radius = 0.003
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_va0uj"]
+albedo_color = Color(1, 0.117647, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8jego"]
+radius = 0.02
+height = 0.04
+
+[node name="YoYoRoot" type="Node3D"]
+script = ExtResource("1_l4yka")
+
+[node name="YoYoBody" type="Node3D" parent="."]
+
+[node name="Axle" type="MeshInstance3D" parent="YoYoBody"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.000471711)
+material_override = SubResource("StandardMaterial3D_h1nxt")
+mesh = SubResource("CylinderMesh_0238e")
+skeleton = NodePath("../..")
+
+[node name="RoundDiskFront" type="MeshInstance3D" parent="YoYoBody"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.0109583)
+material_override = ExtResource("7_wokwo")
+mesh = SubResource("CylinderMesh_2np3v")
+skeleton = NodePath("../..")
+
+[node name="RoundDiskBack" type="MeshInstance3D" parent="YoYoBody"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.0154116)
+material_override = ExtResource("7_wokwo")
+mesh = SubResource("CylinderMesh_2np3v")
+skeleton = NodePath("../..")
+
+[node name="AxleConnectionPoint" type="MeshInstance3D" parent="YoYoBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0264464, 0, -0.0012479)
+material_override = SubResource("StandardMaterial3D_826oa")
+mesh = SubResource("SphereMesh_folf0")
+
+[node name="XTorus" type="MeshInstance3D" parent="YoYoBody"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_hejup")
+mesh = SubResource("TorusMesh_72kne")
+
+[node name="YTorus" type="MeshInstance3D" parent="YoYoBody"]
+material_override = SubResource("StandardMaterial3D_a21pj")
+mesh = SubResource("TorusMesh_72kne")
+skeleton = NodePath("../XTorus")
+
+[node name="ZTorus" type="MeshInstance3D" parent="YoYoBody"]
+transform = Transform3D(1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_u4lhj")
+mesh = SubResource("TorusMesh_72kne")
+
+[node name="String" type="Node3D" parent="."]
+
+[node name="stringMesh" type="MeshInstance3D" parent="String"]
+mesh = SubResource("CylinderMesh_hg1o4")
+skeleton = NodePath("../../YoYoBody")
+
+[node name="StartPoint" type="Node3D" parent="String"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="String/StartPoint"]
+material_override = SubResource("StandardMaterial3D_va0uj")
+mesh = SubResource("SphereMesh_8jego")
+
+[node name="EndPoint" type="Node3D" parent="String"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="String/EndPoint"]
+mesh = SubResource("SphereMesh_8jego")
+skeleton = NodePath("../../StartPoint")

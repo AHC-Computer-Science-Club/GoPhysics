@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://bc4htrv5i6s6w"]
+
+[ext_resource type="Texture2D" uid="uid://duja1yjmi6h3w" path="res://assets/palstic/Plastic_002_basecolor.jpg" id="1_l0kw1"]
+[ext_resource type="Texture2D" uid="uid://bjf3385ip2ak6" path="res://assets/palstic/Plastic_002_ambientOcclusion.jpg" id="2_2alr3"]
+[ext_resource type="Texture2D" uid="uid://dphqcipg5i5t6" path="res://assets/palstic/Plastic_002_height.png" id="3_ea0yn"]
+[ext_resource type="Texture2D" uid="uid://b57xa1mo20m0s" path="res://assets/palstic/Plastic_002_normal.jpg" id="4_lu4q2"]
+[ext_resource type="Texture2D" uid="uid://be6h5vor7w2qx" path="res://assets/palstic/Plastic_002_roughness.jpg" id="5_rh7pn"]
+
+[resource]
+albedo_color = Color(0.721569, 0.92549, 0.952941, 1)
+albedo_texture = ExtResource("1_l0kw1")
+roughness_texture = ExtResource("5_rh7pn")
+normal_enabled = true
+normal_texture = ExtResource("4_lu4q2")
+ao_enabled = true
+ao_texture = ExtResource("2_2alr3")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_ea0yn")

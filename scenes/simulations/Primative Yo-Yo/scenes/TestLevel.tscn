@@ -1,0 +1,178 @@
+[gd_scene load_steps=25 format=3 uid="uid://bitreij3xh57y"]
+
+[ext_resource type="Script" path="res://scenes/simulations/Primative Yo-Yo/scripts/CameraMovement.gd" id="2_hjphk"]
+[ext_resource type="PackedScene" uid="uid://btuov7s0vd2w4" path="res://scenes/simulations/Primative Yo-Yo/scenes/debug.tscn" id="3_4wiq5"]
+[ext_resource type="PackedScene" uid="uid://bk2fitutghmu4" path="res://scenes/simulations/Primative Yo-Yo/scenes/yo_yo_body.tscn" id="3_i3sil"]
+[ext_resource type="StyleBox" path="res://scenes/simulations/Primative Yo-Yo/assets/materials/button.tres" id="4_874r1"]
+[ext_resource type="PackedScene" uid="uid://dcyw87dw6swua" path="res://scenes/simulations/Primative Yo-Yo/scenes/slider_panel.tscn" id="5_0sv1g"]
+[ext_resource type="Texture2D" uid="uid://cc3v4g72dcyeu" path="res://scenes/simulations/Primative Yo-Yo/assets/stone_floor/Stylized_Stone_Floor_005_basecolor.jpg" id="6_epw34"]
+[ext_resource type="Texture2D" uid="uid://dhx4n186lbcuk" path="res://scenes/simulations/Primative Yo-Yo/assets/Metal_Rusted_010_basecolor.jpg" id="7_ghwju"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8r8xt"]
+sky_top_color = Color(0.403922, 0.282353, 0.996078, 1)
+sky_horizon_color = Color(0.976471, 0.498039, 0.32549, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sun_curve = 0.235375
+
+[sub_resource type="Sky" id="Sky_logf4"]
+sky_material = SubResource("ProceduralSkyMaterial_8r8xt")
+
+[sub_resource type="Environment" id="Environment_kbtp0"]
+background_mode = 2
+sky = SubResource("Sky_logf4")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4kf8"]
+bg_color = Color(0.521569, 0.627451, 0.619608, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qre14"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmxp1"]
+albedo_texture = ExtResource("6_epw34")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4cdj"]
+albedo_color = Color(0.00784314, 0.141176, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kd1sh"]
+material = SubResource("StandardMaterial3D_m4cdj")
+size = Vector2(200, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3di4u"]
+albedo_texture = ExtResource("7_ghwju")
+
+[sub_resource type="TorusMesh" id="TorusMesh_7y733"]
+inner_radius = 0.8
+outer_radius = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kr5yq"]
+albedo_texture = ExtResource("6_epw34")
+
+[sub_resource type="BoxMesh" id="BoxMesh_68nws"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flhwk"]
+albedo_texture = ExtResource("6_epw34")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qdok"]
+albedo_texture = ExtResource("6_epw34")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hejs"]
+albedo_texture = ExtResource("6_epw34")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wi0ct"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vn7x"]
+albedo_texture = ExtResource("6_epw34")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kbtp0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="YoYoRoot" parent="." instance=ExtResource("3_i3sil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.88, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.44818, 0, 0.893943, 0, 1, 0, -0.893943, 0, 0.44818, 0.793231, 19.7514, 1.0577)
+script = ExtResource("2_hjphk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
+
+[node name="DebugPanel" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("yoyoRoot") instance=ExtResource("3_4wiq5")]
+offset_left = -716.0
+offset_top = 3.0
+offset_bottom = 293.0
+yoyoRoot = NodePath("../../../YoYoRoot")
+
+[node name="Reset" type="Button" parent="Camera3D/CanvasLayer/DebugPanel"]
+layout_mode = 1
+offset_left = -1.0
+offset_top = 61.0
+offset_right = 70.0
+offset_bottom = 131.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_q4kf8")
+theme_override_styles/pressed = ExtResource("4_874r1")
+theme_override_styles/normal = ExtResource("4_874r1")
+text = "Reset"
+
+[node name="Start" type="Button" parent="Camera3D/CanvasLayer/DebugPanel"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 133.0
+offset_bottom = 32.0
+text = "Start Simulation"
+
+[node name="CheckButton" type="CheckButton" parent="Camera3D/CanvasLayer/DebugPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 142.0
+offset_right = 103.0
+offset_bottom = 173.0
+text = "Pause"
+
+[node name="Export Data" type="Button" parent="Camera3D/CanvasLayer/DebugPanel"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 74.0
+offset_right = 147.0
+offset_bottom = 121.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_qre14")
+text = "Export"
+
+[node name="SliderPanel" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("yoyoRoot") instance=ExtResource("5_0sv1g")]
+offset_left = 85.0
+offset_top = 42.0
+offset_right = 161.0
+offset_bottom = 87.0
+yoyoRoot = NodePath("../../../YoYoRoot")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00120413, -0.00754809, 0.0100189)
+material_override = SubResource("StandardMaterial3D_gmxp1")
+mesh = SubResource("PlaneMesh_kd1sh")
+
+[node name="Ring" type="MeshInstance3D" parent="."]
+transform = Transform3D(159.13, 0, 0, 0, 103.4, 0, 0, 0, 155.531, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_3di4u")
+mesh = SubResource("TorusMesh_7y733")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.57673, 0, 0, 0, 1.57673, 0, 0, 0, 13.2452, 15.6066, 1.46702, -12.2961)
+material_override = SubResource("StandardMaterial3D_kr5yq")
+mesh = SubResource("BoxMesh_68nws")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.677295, 9.92002, -17.25, 4.76837e-07, 2.42027, 98.2173, 5.47199, 3.62027, 162.076, 100.755, 35.8068, -4.15611)
+material_override = SubResource("StandardMaterial3D_flhwk")
+mesh = SubResource("BoxMesh_68nws")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.0879, 0, 0, 0, 2.16639, 10.4655, 0, -1.24583, 18.1986, -19.0798, -1.97765, -30.6244)
+material_override = SubResource("StandardMaterial3D_4qdok")
+mesh = SubResource("BoxMesh_68nws")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.22461, 0, -8.34319, 0, 1.57673, 0, 0.993188, 0, 10.2872, 34.8294, 0.278005, 35.3824)
+material_override = SubResource("StandardMaterial3D_1hejs")
+mesh = SubResource("CylinderMesh_wi0ct")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.55142, 9.96553, 0, -2.4144, 39.4239, 0, 0, 0, 26.4311, -24.4198, 1.46702, 29.5539)
+material_override = SubResource("StandardMaterial3D_5vn7x")
+mesh = SubResource("CylinderMesh_wi0ct")
+skeleton = NodePath("../MeshInstance3D")
+
+[connection signal="pressed" from="Camera3D/CanvasLayer/DebugPanel/Reset" to="YoYoRoot" method="_on_reset_pressed"]
+[connection signal="pressed" from="Camera3D/CanvasLayer/DebugPanel/Start" to="YoYoRoot" method="_on_start_pressed"]
+[connection signal="toggled" from="Camera3D/CanvasLayer/DebugPanel/CheckButton" to="YoYoRoot" method="_on_check_button_toggled"]
+[connection signal="pressed" from="Camera3D/CanvasLayer/DebugPanel/Export Data" to="YoYoRoot" method="_on_export_data_pressed"]

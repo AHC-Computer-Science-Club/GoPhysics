@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=3 uid="uid://btuov7s0vd2w4"]
+
+[ext_resource type="Script" path="res://scenes/simulations/Primative Yo-Yo/scripts/debug.gd" id="1_wnpnn"]
+
+[node name="DebugPanel" type="Panel"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -472.0
+offset_bottom = 393.0
+grow_horizontal = 0
+script = ExtResource("1_wnpnn")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_bottom = 40.0
+grow_horizontal = 0
+columns = 2
+
+[node name="Omega" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Current Omega"
+
+[node name="OmegaNumber" type="Label" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Torque" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Current Torque"
+
+[node name="TorqueNumber" type="Label" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Inertia" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Current Moment of Inertia"
+
+[node name="InertiaNumber" type="Label" parent="GridContainer"]
+layout_mode = 2
+
+[node name="StringLength" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Current String Length"
+
+[node name="StringLengthNumber" type="Label" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Weight" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Current YoYo Mass"
+
+[node name="WeightNumber" type="Label" parent="GridContainer"]
+layout_mode = 2
+
+[node name="StringHeight" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Current String Height"
+
+[node name="StringHeightNumber" type="Label" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Theta" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Current Theta"
+
+[node name="ThetaNumber" type="Label" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Acceleration" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Current  Acceleration"
+
+[node name="AccelerationNumber" type="Label" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Alpha" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Current  Alpha"
+
+[node name="AlphaNumber" type="Label" parent="GridContainer"]
+layout_mode = 2
