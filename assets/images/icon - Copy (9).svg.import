@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7nculowf8kpj"
-path="res://.godot/imported/icon - Copy (10).svg-50140fe9d876f0cb331eb55755dfb4c2.ctex"
+uid="uid://dun1wax371ncq"
+path="res://.godot/imported/icon - Copy (9).svg-fb0084e04fae4505fb35074baaddbc2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icon - Copy (10).svg"
-dest_files=["res://.godot/imported/icon - Copy (10).svg-50140fe9d876f0cb331eb55755dfb4c2.ctex"]
+source_file="res://assets/images/icon - Copy (9).svg"
+dest_files=["res://.godot/imported/icon - Copy (9).svg-fb0084e04fae4505fb35074baaddbc2a.ctex"]
 
 [params]
 
