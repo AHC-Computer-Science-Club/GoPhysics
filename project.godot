@@ -14,3 +14,9 @@ config/name="GoPhysics"
 run/main_scene="res://scenes/simulations/Primative Yo-Yo/scenes/TestLevel.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://scenes/icon.svg"
+
+[autoload]
+
+GlobalVariables="*res://scripts/global_scripts/GlobalVariables.gd"
+SignalBus="*res://scripts/global_scripts/SignalBus.gd"
+DataCollection="*res://scripts/global_scripts/DataCollection.gd"

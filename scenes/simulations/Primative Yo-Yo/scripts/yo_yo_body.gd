@@ -80,9 +80,11 @@ func _ready():
 	setup()
 	
 	init_physics()
+	var tracked_keys = ["theta", "omega", "vy", "tension_force", "acceleration"]
+	DataCollection.init_tracking(tracked_keys)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	
 	# Control time steps
 	delta = delta * time_scale
@@ -93,7 +95,13 @@ func _process(delta):
 	update_string()
 	# If not paused then update arrays holding simulation data
 	if !paused && !current_sim_finished:
-		tsv_test()
+		DataCollection.capture_data({
+			"theta": theta,
+			"omega": omega,
+			"vy": vy,
+			"tension_force": tension_force,
+			"acceleration": acceleration
+		})
 
 # Set up basic values for the Yo-Yo and the string
 # This along with update_string() took a lot of messing up
@@ -282,7 +290,7 @@ func _on_slider_panel_slider_radius_value_change(value):
 # Should get called every frame
 func tsv_test():
 	# Rate of saving data by the frames passed
-	frame_counter += frame_constraint
+	frame_counter += 1
 	if frame_counter >= frame_constraint:
 		# Append data to relevant arrays
 		omega_values.append(omega)
@@ -308,9 +316,9 @@ func _on_slider_panel_slider_axle_height_value_change(value):
 
 
 func _on_export_data_pressed():
-	print(omega_values)
-	print("test")
-	export_data_to_tsv("E:/Godot Projects/Yo-Yo/csv/data_values.tsv")
+	var headers = ["Frame", "Theta", "Omega", "Vy", "Tension Force", "Acceleration"]  # Add headers for each tracked variable
+	var file_path = "E:/Godot Projects/Yo-Yo/csv/data_values.tsv"  # Choose your file path
+	DataCollection.export_data_to_tsv(file_path, headers)
 
 
 func _on_slider_panel_slider_axle_radius_value_change(value):
