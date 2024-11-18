@@ -1,0 +1,64 @@
+[gd_scene load_steps=14 format=3 uid="uid://bype87ha0mf02"]
+
+[ext_resource type="Script" path="res://scripts/public_scripts/CameraMovement.gd" id="1_3tprs"]
+[ext_resource type="Texture2D" uid="uid://cc3v4g72dcyeu" path="res://scenes/simulations/Primative Yo-Yo/assets/stone_floor/Stylized_Stone_Floor_005_basecolor.jpg" id="1_8fta6"]
+[ext_resource type="Script" path="res://scenes/UI/base_level.gd" id="1_xb781"]
+[ext_resource type="PackedScene" uid="uid://4sbumjn0iwpt" path="res://scenes/UI/debug_panel.tscn" id="3_6p1l0"]
+[ext_resource type="Script" path="res://scenes/UI/cube.gd" id="3_faeyv"]
+[ext_resource type="Script" path="res://scripts/DebugPanel.gd" id="4_svln0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_misv2"]
+sky_top_color = Color(0.403922, 0.282353, 0.996078, 1)
+sky_horizon_color = Color(0.976471, 0.498039, 0.32549, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sun_curve = 0.235375
+
+[sub_resource type="Sky" id="Sky_logf4"]
+sky_material = SubResource("ProceduralSkyMaterial_misv2")
+
+[sub_resource type="Environment" id="Environment_3k1bs"]
+background_mode = 2
+sky = SubResource("Sky_logf4")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gudpq"]
+albedo_texture = ExtResource("1_8fta6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4cdj"]
+albedo_color = Color(0.00784314, 0.141176, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_18ygo"]
+material = SubResource("StandardMaterial3D_m4cdj")
+size = Vector2(200, 200)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2eyaf"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_xb781")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.42237, 7.2937)
+script = ExtResource("1_3tprs")
+
+[node name="DebugPanel" parent="Camera3D" instance=ExtResource("3_6p1l0")]
+script = ExtResource("4_svln0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3k1bs")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.857167, -0.397416, 0.327604, 0, 0.636078, 0.771625, -0.515038, 0.661411, -0.545225, 0, 0, 0)
+
+[node name="Enviroment" type="Node3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00120413, -0.00754809, 0.0100189)
+material_override = SubResource("StandardMaterial3D_gudpq")
+mesh = SubResource("PlaneMesh_18ygo")
+skeleton = NodePath("")
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9913, 0)
+mesh = SubResource("BoxMesh_2eyaf")
+script = ExtResource("3_faeyv")

@@ -14,12 +14,12 @@ sky_horizon_color = Color(0.976471, 0.498039, 0.32549, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 sun_curve = 0.235375
 
-[sub_resource type="Sky" id="Sky_logf4"]
+[sub_resource type="Sky" id="Sky_s4ghx"]
 sky_material = SubResource("ProceduralSkyMaterial_8r8xt")
 
 [sub_resource type="Environment" id="Environment_kbtp0"]
 background_mode = 2
-sky = SubResource("Sky_logf4")
+sky = SubResource("Sky_s4ghx")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -35,11 +35,11 @@ corner_radius_bottom_left = 50
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmxp1"]
 albedo_texture = ExtResource("6_epw34")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4cdj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a10t1"]
 albedo_color = Color(0.00784314, 0.141176, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kd1sh"]
-material = SubResource("StandardMaterial3D_m4cdj")
+material = SubResource("StandardMaterial3D_a10t1")
 size = Vector2(200, 200)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3di4u"]

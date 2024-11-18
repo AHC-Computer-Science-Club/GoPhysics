@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://4sbumjn0iwpt"]
+
+[node name="DebugPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_right = 200.0
+offset_bottom = 252.0
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 2

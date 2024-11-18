@@ -67,13 +67,13 @@ var stringLength = 0
 var moment_of_inertia = 0 
 var acceleration = 0
 
-# Mucking about with csv variables
-var omega_values = []  # Array to hold omega values
-var time_scale_values = [] # Array to hold time scale values
-var speed_values = [] # Array to hold speed values
-var height_fall_values = []
-var frame_counter = 0  # Counter to track frames
-var frame_constraint = 1 # Use this to change at what rate data is recorded into
+## Mucking about with csv variables
+#var omega_values = []  # Array to hold omega values
+#var time_scale_values = [] # Array to hold time scale values
+#var speed_values = [] # Array to hold speed values
+#var height_fall_values = []
+#var frame_counter = 0  # Counter to track frames
+#var frame_constraint = 1 # Use this to change at what rate data is recorded into
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -218,25 +218,25 @@ func calculate_moment_of_inertia(shape):
 	else:
 		return 0  # Default if shape does not match
 
-# Called to export data to a TSV file (Tab Separated Values), tried the CSV, for some reason not working well. Using TSV as alt. The String is where you want the file.
-func export_data_to_tsv(file_path: String):
-	var file = FileAccess.open(file_path, FileAccess.ModeFlags.WRITE)
-	if file:
-		# Write headers 
-		file.store_line("Frame\tTimeScale (s)\tOmega (rad/s)\tSpeed (m/s)\tHeightFallen (m)")
-		
-		# Write data to file
-		for i in range(omega_values.size()):
-			var frame = i * frame_constraint
-			var omega = omega_values[i]
-			var time_scale_value = time_scale_values[i]
-			var speed = speed_values[i]
-			var height_fallen = height_fall_values[i]
-			file.store_line(str(frame) + "\t" + str(time_scale_value) + "\t" + str(omega) + "\t" + str(speed) + "\t" + str(height_fallen))
-		
-		file.close()  # Don't forget to close the file after writing
-	else:
-		print("Failed to open file for writing.")
+## Called to export data to a TSV file (Tab Separated Values), tried the CSV, for some reason not working well. Using TSV as alt. The String is where you want the file.
+#func export_data_to_tsv(file_path: String):
+	#var file = FileAccess.open(file_path, FileAccess.ModeFlags.WRITE)
+	#if file:
+		## Write headers 
+		#file.store_line("Frame\tTimeScale (s)\tOmega (rad/s)\tSpeed (m/s)\tHeightFallen (m)")
+		#
+		## Write data to file
+		#for i in range(omega_values.size()):
+			#var frame = i * frame_constraint
+			#var omega = omega_values[i]
+			#var time_scale_value = time_scale_values[i]
+			#var speed = speed_values[i]
+			#var height_fallen = height_fall_values[i]
+			#file.store_line(str(frame) + "\t" + str(time_scale_value) + "\t" + str(omega) + "\t" + str(speed) + "\t" + str(height_fallen))
+		#
+		#file.close()  # Don't forget to close the file after writing
+	#else:
+		#print("Failed to open file for writing.")
 
 # Function to initialize physics calculations for the yo-yo simulation
 func init_physics():
@@ -286,19 +286,19 @@ func _on_slider_panel_slider_radius_value_change(value):
 	disk_radius = value
 	init_physics()
 
-# Trying to figure out data export
-# Should get called every frame
-func tsv_test():
-	# Rate of saving data by the frames passed
-	frame_counter += 1
-	if frame_counter >= frame_constraint:
-		# Append data to relevant arrays
-		omega_values.append(omega)
-		time_scale_values.append(time_scale)
-		speed_values.append(abs(vy))
-		height_fall_values.append(stringLength - 0.25)
-		frame_counter = 0  # Reset frame counter
-		print("Omega tracked: ", omega, " TimeScale tracked: ", time_scale, " Speed tracked: ", abs(vy), " Height Fallen tacked: ", String("%.5f" % stringLength))
+## Trying to figure out data export
+## Should get called every frame
+#func tsv_test():
+	## Rate of saving data by the frames passed
+	#frame_counter += 1
+	#if frame_counter >= frame_constraint:
+		## Append data to relevant arrays
+		#omega_values.append(omega)
+		#time_scale_values.append(time_scale)
+		#speed_values.append(abs(vy))
+		#height_fall_values.append(stringLength - 0.25)
+		#frame_counter = 0  # Reset frame counter
+		#print("Omega tracked: ", omega, " TimeScale tracked: ", time_scale, " Speed tracked: ", abs(vy), " Height Fallen tacked: ", String("%.5f" % stringLength))
 
 # Disk mass slider connection
 func _on_slider_panel_slider_disk_mass_value_change(value):
