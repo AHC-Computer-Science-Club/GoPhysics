@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://bype87ha0mf02"]
 
-[ext_resource type="Script" path="res://scripts/public_scripts/CameraMovement.gd" id="1_3tprs"]
-[ext_resource type="Texture2D" uid="uid://cc3v4g72dcyeu" path="res://scenes/simulations/Primative Yo-Yo/assets/stone_floor/Stylized_Stone_Floor_005_basecolor.jpg" id="1_8fta6"]
-[ext_resource type="Script" path="res://scenes/UI/base_level.gd" id="1_xb781"]
-[ext_resource type="PackedScene" uid="uid://4sbumjn0iwpt" path="res://scenes/UI/debug_panel.tscn" id="3_6p1l0"]
-[ext_resource type="Script" path="res://scenes/UI/cube.gd" id="3_faeyv"]
-[ext_resource type="Script" path="res://scripts/DebugPanel.gd" id="4_svln0"]
+[ext_resource type="Script" path="res://scripts/open_scripts/base_level.gd" id="1_vgiwe"]
+[ext_resource type="Script" path="res://scripts/public_scripts/CameraMovement.gd" id="2_v6e17"]
+[ext_resource type="PackedScene" uid="uid://4sbumjn0iwpt" path="res://scenes/UI/debug_panel.tscn" id="3_8fjtw"]
+[ext_resource type="Script" path="res://scripts/open_scripts/DebugPanel.gd" id="4_jyj5d"]
+[ext_resource type="Texture2D" uid="uid://cc3v4g72dcyeu" path="res://scenes/simulations/Primative Yo-Yo/assets/stone_floor/Stylized_Stone_Floor_005_basecolor.jpg" id="5_wqlqq"]
+[ext_resource type="Script" path="res://scenes/UI/cube.gd" id="6_fnr6n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_misv2"]
 sky_top_color = Color(0.403922, 0.282353, 0.996078, 1)
@@ -23,7 +23,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gudpq"]
-albedo_texture = ExtResource("1_8fta6")
+albedo_texture = ExtResource("5_wqlqq")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4cdj"]
 albedo_color = Color(0.00784314, 0.141176, 0, 1)
@@ -35,14 +35,14 @@ size = Vector2(200, 200)
 [sub_resource type="BoxMesh" id="BoxMesh_2eyaf"]
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_xb781")
+script = ExtResource("1_vgiwe")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.42237, 7.2937)
-script = ExtResource("1_3tprs")
+script = ExtResource("2_v6e17")
 
-[node name="DebugPanel" parent="Camera3D" instance=ExtResource("3_6p1l0")]
-script = ExtResource("4_svln0")
+[node name="DebugPanel" parent="Camera3D" instance=ExtResource("3_8fjtw")]
+script = ExtResource("4_jyj5d")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3k1bs")
@@ -61,4 +61,4 @@ skeleton = NodePath("")
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9913, 0)
 mesh = SubResource("BoxMesh_2eyaf")
-script = ExtResource("3_faeyv")
+script = ExtResource("6_fnr6n")
